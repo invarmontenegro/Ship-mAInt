@@ -1,36 +1,36 @@
+# Import necessary libraries
 import numpy as np
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-# Ako su input i output vec definisani 
+# For extracting input and output data
 x = Input.T
 t = Output.T
 
-# definise "classifier"
+# define "classifier"
 clf = MLPClassifier(hidden_layer_sizes=(10,), solver='adam')
 
-# podjela podataka na trening i testnu grupu 
+# divide data into training and test groups
 x_train, x_test, t_train, t_test = train_test_split(x, t, test_size=0.3, random_state=42)
 
-# ubacivanje classifier u testnu grupu 
+# fit classifier to test group
 clf.fit(x_train, t_train)
 
-# kreira predikciju testnih vrijednosti 
+# create prediction of test values
 t_pred = clf.predict(x_test)
 
-# racunanje preciznosti modela 
+# calculate model accuracy
 performance = accuracy_score(t_test, t_pred)
 
-# printanje classifier parametara
+# print classifier parameters
 print(clf)
 
-
-# importovati matplotlib.pyplot kao plt
+# import matplotlib.pyplot as plt
 # plt.plot(performance)
 # plt.show()
-# Napomena da su funkcije train_test_split i accuracy_score iz scikit-learn biblioteke
-# MLPClassifier je klasifikator za neuronsku mrežu, funkcija view(net) zamijenjena je sa print(clf) koja će ispisati parametre klasifikatora
-# Možete koristiti matplotlib biblioteku za crtanje performansi modela
-# Prilikom testiranja koda obavezno importati "Numpy" library
-# Da bi program radio potrebno je ubaciti bazu podataka za potrebne varijable 
+# Note that the functions train_test_split and accuracy_score are from the scikit-learn library
+# MLPClassifier is a classifier for a neural network, the function view(net) is replaced with print(clf) which will print the classifier parameters
+# You can use the matplotlib library to plot the model's performance
+# When testing the code, make sure to import the "Numpy" library
+# To run the program, it is necessary to insert the database for the necessary variables
